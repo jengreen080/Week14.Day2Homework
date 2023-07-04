@@ -21,7 +21,7 @@ public class Folder {
     @ManyToOne
     @JoinColumn(name = "person_id", nullable = false)
 //    @JsonIgnoreProperties({"folder"})
-    private List<Person> person;
+    private Person person;
 
     @OneToMany(mappedBy = "folder")
     private List<IndividualFile> files;
@@ -32,7 +32,8 @@ public class Folder {
 
     public Folder(String title) {
         this.title = title;
-//        this.files = new ArrayList<>();
+//        this.person = new ArrayList<>();
+        this.files = new ArrayList<>();
     }
 
     public Long getId() {
@@ -51,11 +52,11 @@ public class Folder {
         this.title = title;
     }
 
-//    public List<File> getFiles() {
-//        return files;
-//    }
-//
-//    public void setFiles(List<File> files) {
-//        this.files = files;
-//    }
+    public List<IndividualFile> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<IndividualFile> files) {
+        this.files = files;
+    }
 }
